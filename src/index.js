@@ -12,7 +12,6 @@ import {
 import Hardware from "./pages/Hardware";
 import Software from "./pages/Software";
 import Login from "./pages/Login";
-import Login_SignUp3 from "./pages/Login_SignUp3";
 import Login_SignUp2 from "./pages/Login_SignUp2";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

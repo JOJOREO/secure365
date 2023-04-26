@@ -55,6 +55,7 @@ const Software = () => {
   return (
     <div className="App">
       <Navbar
+        navbarMode={"Software"}
         //  props={props}
         props2={props2}
       />
@@ -107,7 +108,7 @@ const Software = () => {
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"
       />
-      <ReversedAbout
+      {/* <ReversedAbout
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
@@ -116,7 +117,7 @@ const Software = () => {
         liImg={featureimage6}
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"
-      />
+      /> */}
       {/* <Presentation
         // props={props}
         PresentationVariable={PresentationVariable}

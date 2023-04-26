@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import logo from "../images/website_data/logo.png";
 // import { NavLink } from "react-router-dom";
 // const Navbar = ({ props }) => {
-const Navbar = ({ props2 }) => {
+const Navbar = (props) => {
+  // let [navbarMode, setNavbarMode] = useState("home");
+
+  // setNavbarMode(props2.navbarMode);
+
   const [nav, setNav] = useState(false);
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -62,9 +66,128 @@ const Navbar = ({ props2 }) => {
   //   setContactVariable,
   // } = { ...props };
   // console.log("PresentationVariable", props.PresentationVariable);
-  console.log("props", { ...props2 });
+  console.log("props2", { ...props.props2 });
   //console.log("PresentationVariable", props2.props2.PresentationVariable);
   // console.log(props2);
+  if (props.navbarMode === "Hardware") {
+    return (
+      <nav
+        className={nav ? "active" : "nav"}
+        // style={{ background: "white" }}
+      >
+        <a href="#" className="logo">
+          <img src={logo}></img>
+        </a>
+        <input type="checkbox" className="menu-btn" id="menu-btn"></input>
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="nav-icon"></span>
+        </label>
+        <ul className="menu">
+          <li>
+            <a href="#" className={props.props2.HeaderVariable ? "active" : ""}>
+              Z-Wave
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#VideoPlayer"
+              className={props.props2.VideoVariable1 ? "active" : ""}
+            >
+              Security
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#features"
+              className={props.props2.FeatureVariable ? "active" : ""}
+            >
+              Surveillance
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#about"
+              className={props.props2.AboutVariable ? "active" : ""}
+            >
+              Sensor Array
+            </a>
+          </li>
+          <li>
+            <Link
+              to={"/Login"}
+              // href="#login/SignUp"
+              // className={props.PresentationVariable ? "active" : ""}
+              // className={props2.PresentationVariable ? "active" : ""}
+            >
+              Login/Signup
+            </Link>
+          </li>
+          <li>
+            <a href="#">Download</a>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+
+  if (props.navbarMode === "Software") {
+    return (
+      <nav
+        className={nav ? "active" : "nav"}
+        // style={{ background: "white" }}
+      >
+        <a href="#" className="logo">
+          <img src={logo}></img>
+        </a>
+        <input type="checkbox" className="menu-btn" id="menu-btn"></input>
+        <label className="menu-icon" htmlFor="menu-btn">
+          <span className="nav-icon"></span>
+        </label>
+        <ul className="menu">
+          <li>
+            <a href="#" className={props.props2.HeaderVariable ? "active" : ""}>
+              AI
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#VideoPlayer"
+              className={props.props2.VideoVariable1 ? "active" : ""}
+            >
+              Mobile Appliaction
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#features"
+              className={props.props2.FeatureVariable ? "active" : ""}
+            >
+              Local Processing
+            </a>
+          </li>
+          <li>
+            <Link
+              to={"/Login"}
+              // href="#login/SignUp"
+              // className={props.PresentationVariable ? "active" : ""}
+              // className={props2.PresentationVariable ? "active" : ""}
+            >
+              Login/Signup
+            </Link>
+          </li>
+          <li>
+            <a href="#">Download</a>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
+
   return (
     <nav
       className={nav ? "active" : "nav"}
@@ -79,7 +202,7 @@ const Navbar = ({ props2 }) => {
       </label>
       <ul className="menu">
         <li>
-          <a href="#" className={props2.HeaderVariable ? "active" : ""}>
+          <a href="#" className={props.props2.HeaderVariable ? "active" : ""}>
             Home
           </a>
         </li>
@@ -87,7 +210,7 @@ const Navbar = ({ props2 }) => {
         <li>
           <a
             href="#VideoPlayer"
-            className={props2.VideoVariable1 ? "active" : ""}
+            className={props.props2.VideoVariable1 ? "active" : ""}
           >
             VideoPlayer
           </a>
@@ -96,14 +219,17 @@ const Navbar = ({ props2 }) => {
         <li>
           <a
             href="#features"
-            className={props2.FeatureVariable ? "active" : ""}
+            className={props.props2.FeatureVariable ? "active" : ""}
           >
             Features
           </a>
         </li>
 
         <li>
-          <a href="#about" className={props2.AboutVariable ? "active" : ""}>
+          <a
+            href="#about"
+            className={props.props2.AboutVariable ? "active" : ""}
+          >
             About
           </a>
         </li>
@@ -111,7 +237,7 @@ const Navbar = ({ props2 }) => {
           <a
             href="#presentation"
             // className={props.PresentationVariable ? "active" : ""}
-            className={props2.PresentationVariable ? "active" : ""}
+            className={props.props2.PresentationVariable ? "active" : ""}
           >
             UI{" "}
           </a>

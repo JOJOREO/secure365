@@ -47,6 +47,7 @@ const Hardware = () => {
   return (
     <div className="App">
       <Navbar
+        navbarMode={"Hardware"}
         //  props={props}
         props2={props2}
       />
