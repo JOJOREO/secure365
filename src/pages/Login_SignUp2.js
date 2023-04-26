@@ -74,7 +74,7 @@ const Login_SignUp2 = () => {
               />
               <img
                 title={loginIsRevealPwd ? "Hide password" : "Show password"}
-                src={loginIsRevealPwd ? hidePwdImg : showPwdImg}
+                src={!loginIsRevealPwd ? hidePwdImg : showPwdImg}
                 onClick={() => setLoginIsRevealPwd((prevState) => !prevState)}
               />
             </div>
@@ -113,7 +113,7 @@ const Login_SignUp2 = () => {
               required
               type="text"
               className="form-control mt-1"
-              placeholder="e.g Jane_Doe123"
+              placeholder="e.g Joe_seif2964"
               value={signUpUsername}
               onChange={(e) => setSignUpUsername(e.target.value)}
             />
@@ -159,7 +159,7 @@ const Login_SignUp2 = () => {
             const [signUpisRevealPwd, setSignUpIsRevealPwd] = useState(false); */}
             <img
               title={signUpisRevealPwd ? "Hide password" : "Show password"}
-              src={signUpisRevealPwd ? hidePwdImg : showPwdImg}
+              src={!signUpisRevealPwd ? hidePwdImg : showPwdImg}
               onClick={() => setSignUpIsRevealPwd((prevState) => !prevState)}
             />
           </div>
@@ -199,7 +199,7 @@ const Login_SignUp2 = () => {
               title={
                 signUpRepeatisRevealPwd ? "Hide password" : "Show password"
               }
-              src={signUpRepeatisRevealPwd ? hidePwdImg : showPwdImg}
+              src={!signUpRepeatisRevealPwd ? hidePwdImg : showPwdImg}
               onClick={() =>
                 setsignUpRepeatIsRevealPwd((prevState) => !prevState)
               }

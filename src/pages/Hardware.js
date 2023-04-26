@@ -1,22 +1,20 @@
 import React from "react";
 import Header from "../Components/Header";
-// import Feature from "./Components/Feature";
 import About from "../Components/about";
-// import Contact from "./Components/Contact";
-// import Presentation from "./Components/presentation";
 import aboutImage from "../images/trial_pics/Frame 19.png";
-// import aboutImage2 from "./images/trial_pics/download.png";
-// import VideoPlayer from "./Components/VideoPlayer";
 import Navbar from "../Components/Navbar";
 //use in view hook aka new way
 
 import { useInView } from "react-intersection-observer";
-
 import { useEffect, useState } from "react";
-
-// import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
-// import Founders from "./Components/Founders";
+
+import featureimage2 from "../images/website_data/Security.png";
+import featureimage3 from "../images/website_data/Surveillance.png";
+import featureimage4 from "../images/website_data/Sensor_array.png";
+import featureimage5 from "../images/website_data/Ai.png";
+import featureimage6 from "../images/website_data/mobile App.png";
+import featureimage7 from "../images/website_data/local_processing.png";
 
 const Hardware = () => {
   const { ref: HeaderVariableRef, inView: HeaderVariable } = useInView();
@@ -35,6 +33,21 @@ const Hardware = () => {
   const { ref: VideoVariable2Ref, inView: VideoVariable2 } = useInView(); //not necessary optional + no navabr li
   const { ref: FoundersVariableRef, inView: FoundersVariable } = useInView(); //not necessary optional + no navabr li
 
+  // hardware
+  const { ref: zWaveVariableRef, inView: zWaveVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: securityVariableRef, inView: securityVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: surveillanceVariableRef, inView: surveillanceVariable } =
+    useInView(); //not necessary optional + no navabr li
+  const { ref: sensor_arrayVariableRef, inView: sensor_arrayVariable } =
+    useInView(); //not necessary optional + no navabr li
+
+  // software
+  const { ref: AiVariableRef, inView: AiVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: MobileAppVariableRef, inView: MobileAppVariable } = useInView(); //not necessary optional + no navabr li
+  const {
+    ref: local_processing_VariableRef,
+    inView: local_processing_Variable,
+  } = useInView(); //not necessary optional + no navabr li
   const props2 = {
     HeaderVariable,
     FeatureVariable,
@@ -43,6 +56,13 @@ const Hardware = () => {
     VideoVariable1,
     VideoVariable2,
     FoundersVariable,
+    zWaveVariable,
+    securityVariable,
+    surveillanceVariable,
+    sensor_arrayVariable,
+    AiVariable,
+    MobileAppVariable,
+    local_processing_Variable,
   };
   return (
     <div className="App">
@@ -73,7 +93,7 @@ const Hardware = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         Hw={true}
-        ref={AboutVariableRef}
+        ref={zWaveVariableRef}
         image={aboutImage}
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"
@@ -82,7 +102,7 @@ const Hardware = () => {
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        ref={AboutVariableRef}
+        ref={securityVariableRef}
         image={aboutImage}
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"
@@ -91,7 +111,7 @@ const Hardware = () => {
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        ref={AboutVariableRef}
+        ref={surveillanceVariableRef}
         image={aboutImage}
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"
@@ -100,7 +120,7 @@ const Hardware = () => {
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        ref={AboutVariableRef}
+        ref={sensor_arrayVariableRef}
         image={aboutImage}
         title="Comes With All You Need TO Secure Your House"
         button="Get The App"

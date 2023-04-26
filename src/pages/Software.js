@@ -43,6 +43,22 @@ const Software = () => {
   const { ref: VideoVariable2Ref, inView: VideoVariable2 } = useInView(); //not necessary optional + no navabr li
   const { ref: FoundersVariableRef, inView: FoundersVariable } = useInView(); //not necessary optional + no navabr li
 
+  // hardware
+  const { ref: zWaveVariableRef, inView: zWaveVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: securityVariableRef, inView: securityVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: surveillanceVariableRef, inView: surveillanceVariable } =
+    useInView(); //not necessary optional + no navabr li
+  const { ref: sensor_arrayVariableRef, inView: sensor_arrayVariable } =
+    useInView(); //not necessary optional + no navabr li
+
+  // software
+  const { ref: AiVariableRef, inView: AiVariable } = useInView(); //not necessary optional + no navabr li
+  const { ref: MobileAppVariableRef, inView: MobileAppVariable } = useInView(); //not necessary optional + no navabr li
+  const {
+    ref: local_processing_VariableRef,
+    inView: local_processing_Variable,
+  } = useInView(); //not necessary optional + no navabr li
+
   const props2 = {
     HeaderVariable,
     FeatureVariable,
@@ -51,6 +67,13 @@ const Software = () => {
     VideoVariable1,
     VideoVariable2,
     FoundersVariable,
+    zWaveVariable,
+    securityVariable,
+    surveillanceVariable,
+    sensor_arrayVariable,
+    AiVariable,
+    MobileAppVariable,
+    local_processing_Variable,
   };
   return (
     <div className="App">
@@ -81,7 +104,7 @@ const Software = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         new={true}
-        ref={AboutVariableRef}
+        ref={AiVariableRef}
         image={aboutImage}
         liImg={featureimage7}
         title="Comes With All You Need TO Secure Your House"
@@ -91,7 +114,7 @@ const Software = () => {
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        ref={AboutVariableRef}
+        ref={MobileAppVariableRef}
         image={aboutImage}
         liImg={featureimage6}
         title="Comes With All You Need TO Secure Your House"
@@ -102,7 +125,7 @@ const Software = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         new={true}
-        ref={AboutVariableRef}
+        ref={local_processing_VariableRef}
         image={aboutImage}
         liImg={featureimage7}
         title="Comes With All You Need TO Secure Your House"

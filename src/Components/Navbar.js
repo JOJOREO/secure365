@@ -69,6 +69,7 @@ const Navbar = (props) => {
   console.log("props2", { ...props.props2 });
   //console.log("PresentationVariable", props2.props2.PresentationVariable);
   // console.log(props2);
+
   if (props.navbarMode === "Hardware") {
     return (
       <nav
@@ -84,15 +85,15 @@ const Navbar = (props) => {
         </label>
         <ul className="menu">
           <li>
-            <a href="#" className={props.props2.HeaderVariable ? "active" : ""}>
+            <a href="#" className={props.props2.zWaveVariable ? "active" : ""}>
               Z-Wave
             </a>
           </li>
 
           <li>
             <a
-              href="#VideoPlayer"
-              className={props.props2.VideoVariable1 ? "active" : ""}
+              href="#securityVariable"
+              className={props.props2.securityVariable ? "active" : ""}
             >
               Security
             </a>
@@ -100,8 +101,8 @@ const Navbar = (props) => {
 
           <li>
             <a
-              href="#features"
-              className={props.props2.FeatureVariable ? "active" : ""}
+              href="#surveillanceVariable"
+              className={props.props2.surveillanceVariable ? "active" : ""}
             >
               Surveillance
             </a>
@@ -109,8 +110,8 @@ const Navbar = (props) => {
 
           <li>
             <a
-              href="#about"
-              className={props.props2.AboutVariable ? "active" : ""}
+              href="#sensor_arrayVariable"
+              className={props.props2.sensor_arrayVariable ? "active" : ""}
             >
               Sensor Array
             </a>
@@ -148,7 +149,7 @@ const Navbar = (props) => {
         </label>
         <ul className="menu">
           <li>
-            <a href="#" className={props.props2.HeaderVariable ? "active" : ""}>
+            <a href="#" className={props.props2.AiVariable ? "active" : ""}>
               AI
             </a>
           </li>
@@ -156,7 +157,7 @@ const Navbar = (props) => {
           <li>
             <a
               href="#VideoPlayer"
-              className={props.props2.VideoVariable1 ? "active" : ""}
+              className={props.props2.MobileAppVariable ? "active" : ""}
             >
               Mobile Appliaction
             </a>
@@ -165,7 +166,7 @@ const Navbar = (props) => {
           <li>
             <a
               href="#features"
-              className={props.props2.FeatureVariable ? "active" : ""}
+              className={props.props2.local_processing_Variable ? "active" : ""}
             >
               Local Processing
             </a>
