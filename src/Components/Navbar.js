@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../images/website_data/logo.png";
 // import { NavLink } from "react-router-dom";
 // const Navbar = ({ props }) => {
@@ -113,6 +115,16 @@ const Navbar = ({ props2 }) => {
           >
             UI{" "}
           </a>
+        </li>
+        <li>
+          <Link
+            to={"/Login"}
+            // href="#login/SignUp"
+            // className={props.PresentationVariable ? "active" : ""}
+            // className={props2.PresentationVariable ? "active" : ""}
+          >
+            Login/Signup
+          </Link>
         </li>
         <li>
           <a href="#">Download</a>

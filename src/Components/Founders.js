@@ -22,17 +22,20 @@ const Founders = forwardRef((FeatureVariable, ref) => {
       <div className="a-container" ref={ref}>
         {/* <h1>Software </h1> */}
         <FeatureBox
+          hierarchy={true}
           image={founderimage}
           title="Mahmoud Mohamed"
           description="Team Leader /Hardware Lead"
         />
         <FeatureBox
+          hierarchy={true}
           image={founderimage2}
           title="Youssef Fathi"
           description="Protocols Expert/Hardware"
         />
         <a href="https://github.com/JOJOREO" target="blank">
           <FeatureBox
+            hierarchy={true}
             image={founderimage3}
             title="Youssef Hatem"
             description="Software / Hardware"
@@ -42,12 +45,14 @@ const Founders = forwardRef((FeatureVariable, ref) => {
       <div className="a-container" ref={ref}>
         {/* <h1>Software </h1> */}
         <FeatureBox
+          hierarchy={true}
           image={founderimage4}
           title=" Mohammed Komsany"
           description="Software Lead / Business Manager"
         />
         <a href="https://github.com/walidkamal12" target="blank">
           <FeatureBox
+            hierarchy={true}
             image={founderimage5}
             title="Walid Kamal"
             description="Ai Engineer/ Hardware"

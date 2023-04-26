@@ -5,6 +5,7 @@ import FeatureBox from "./FeatureBox";
 // import featureimage3 from "../images/trial_pics/feature_3.png";
 import featureimage from "../images/website_data/z-wave-plus-vector-logo.png";
 import React, { forwardRef } from "react";
+import { Link } from "react-router-dom";
 import featureimage2 from "../images/website_data/Security.png";
 import featureimage3 from "../images/website_data/Surveillance.png";
 import featureimage4 from "../images/website_data/Sensor_array.png";
@@ -25,26 +26,35 @@ const Feature = forwardRef((FeatureVariable, ref) => {
       <h1 style={{ color: "#00b7ff" }}>Hardware</h1>
       <div className="a-container">
         {/* <h1>Software </h1> */}
-        <FeatureBox
-          image={featureimage}
-          title="Z-Wave"
-          description="Main Control Hub"
-        />
-        <FeatureBox
-          image={featureimage2}
-          title="Security"
-          description="Reliable security through locking system"
-        />
-        <FeatureBox
-          image={featureimage3}
-          title="Surveillance"
-          description="Camera module with PTZ locking system"
-        />
-        <FeatureBox
-          image={featureimage4}
-          title="Sensor array"
-          description="Multiple configurations sensor array"
-        />
+        <Link to={"/Hardware"}>
+          <FeatureBox
+            image={featureimage}
+            title="Z-Wave"
+            description="Main Control Hub"
+          />
+        </Link>
+        <Link to={"/Hardware"}>
+          {" "}
+          <FeatureBox
+            image={featureimage2}
+            title="Security"
+            description="Reliable security through locking system"
+          />
+        </Link>
+        <Link to={"/Hardware"}>
+          <FeatureBox
+            image={featureimage3}
+            title="Surveillance"
+            description="Camera module with PTZ locking system"
+          />
+        </Link>
+        <Link to={"/Hardware"}>
+          <FeatureBox
+            image={featureimage4}
+            title="Sensor array"
+            description="Multiple configurations sensor array"
+          />
+        </Link>
       </div>
       {/* <br></br>
       <br></br> */}
@@ -61,21 +71,27 @@ const Feature = forwardRef((FeatureVariable, ref) => {
 
       <div className="a-container" ref={ref}>
         {/* <h1>Software </h1> */}
-        <FeatureBox
-          image={featureimage5}
-          title=" AI "
-          description="Human Detection AI"
-        />
-        <FeatureBox
-          image={featureimage6}
-          title="Mobile Application"
-          description="Multiplatform mobile application and main user interface"
-        />
-        <FeatureBox
-          image={featureimage7}
-          title="On Premise Processing"
-          description="Data And Footage is Processed Locally On The Hub For Maximum security"
-        />
+        <Link to={"/software"}>
+          <FeatureBox
+            image={featureimage5}
+            title=" AI "
+            description="Human Detection AI"
+          />
+        </Link>
+        <Link to={"/software"}>
+          <FeatureBox
+            image={featureimage6}
+            title="Mobile Application"
+            description="Multiplatform mobile application and main user interface"
+          />
+        </Link>
+        <Link to={"/software"}>
+          <FeatureBox
+            image={featureimage7}
+            title="On Premise Processing"
+            description="Data And Footage is Processed Locally On The Hub For Maximum security"
+          />
+        </Link>
       </div>
     </div>
   );
