@@ -3,28 +3,45 @@ import FeatureBox from "./FeatureBox";
 // import featureimage from "../images/trial_pics/feature_1.png";
 // import featureimage2 from "../images/trial_pics/feature_2.png";
 // import featureimage3 from "../images/trial_pics/feature_3.png";
-import featureimage from "../images/website_data/z-wave-plus-vector-logo.png";
+import featureimage from "../images/website_data/z-wave-plus-vector-logo.svg";
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
-import featureimage2 from "../images/website_data/Security.png";
-import featureimage3 from "../images/website_data/Surveillance.png";
-import featureimage4 from "../images/website_data/Sensor_array.png";
-import featureimage5 from "../images/website_data/Ai.png";
-import featureimage6 from "../images/website_data/mobile App.png";
-import featureimage7 from "../images/website_data/local_processing.png";
+import featureimage2 from "../images/vector_imgs/Security.svg";
+import featureimage3 from "../images/vector_imgs/Surveillance.svg";
+import featureimage4 from "../images/vector_imgs/Sensor_array.svg";
+import featureimage5 from "../images/vector_imgs/Ai.svg";
+import featureimage6 from "../images/vector_imgs/mobile-App.svg";
+import featureimage7 from "../images/vector_imgs/local_processing.svg";
 const myComponentStyle = {
   // margin: "100px",
-  marginBottom: 50,
-  marginTop: 50,
+  // marginBottom: 50,
+  // marginTop: 50,
+  // marginBottom: "2%",
+  paddingBottom: "2%",
+  // paddingTop: "2%",
+  // marginTop: "2%",
   // padding: "150px",
+  // border: "1px solid red",
+  // margin: 0,
+  // padding: 0,
 };
 const h2Style = {};
 // const Feature = () => {
 const Feature = forwardRef((FeatureVariable, ref) => {
   return (
-    <div id="features" style={myComponentStyle} ref={ref}>
+    <div
+      id="features"
+      style={myComponentStyle}
+
+      // ref={ref}
+    >
       <h1 style={{ color: "#00b7ff" }}>Hardware</h1>
-      <div className="a-container">
+      <div
+        className="a-container"
+        // style={{
+        //   border: "1px solid green",
+        // }}
+      >
         {/* <h1>Software </h1> */}
         <Link to={"/Hardware"}>
           <FeatureBox
@@ -56,20 +73,26 @@ const Feature = forwardRef((FeatureVariable, ref) => {
           />
         </Link>
       </div>
+      <div ref={ref}></div>
+
       {/* <br></br>
       <br></br> */}
 
       <h1
-        style={{
-          background: "-webkit-linear-gradient( #09009f, #00b7ff )",
-          webkitBackgroundClip: "text",
-          webkitTextFillColor: "transparent",
-        }}
+        // style={{
+        //   background: "-webkit-linear-gradient( #09009f, #00b7ff )",
+        //   webkitBackgroundClip: "text",
+        //   webkitTextFillColor: "transparent",
+        // }}
+        style={{ color: "#00b7ff" }}
       >
         Software
       </h1>
 
-      <div className="a-container" ref={ref}>
+      <div
+        className="a-container"
+        //  ref={ref}
+      >
         {/* <h1>Software </h1> */}
         <Link to={"/software"}>
           <FeatureBox

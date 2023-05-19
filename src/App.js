@@ -86,9 +86,15 @@ function App() {
     VideoVariable1,
     VideoVariable2,
     FoundersVariable,
+    specialComponent: false,
   };
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        backgroundImage: "url(`./images/trial_pics/background2.png`)",
+      }}
+    >
       <Navbar
         //  props={props}
         props2={props2}

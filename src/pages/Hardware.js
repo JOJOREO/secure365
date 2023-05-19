@@ -3,18 +3,20 @@ import Header from "../Components/Header";
 import About from "../Components/about";
 import aboutImage from "../images/trial_pics/Frame 19.png";
 import Navbar from "../Components/Navbar";
+import ReversedAbout from "../Components/ReversedAbout";
 //use in view hook aka new way
 
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 
-import featureimage2 from "../images/website_data/Security.png";
-import featureimage3 from "../images/website_data/Surveillance.png";
-import featureimage4 from "../images/website_data/Sensor_array.png";
-import featureimage5 from "../images/website_data/Ai.png";
-import featureimage6 from "../images/website_data/mobile App.png";
-import featureimage7 from "../images/website_data/local_processing.png";
+import featureimage from "../images/website_data/z-wave-plus-vector-logo.svg";
+import featureimage2 from "../images/vector_imgs/Security.svg";
+import featureimage3 from "../images/vector_imgs/Surveillance.svg";
+import featureimage4 from "../images/vector_imgs/Sensor_array.svg";
+import featureimage5 from "../images/vector_imgs/Ai.svg";
+import featureimage6 from "../images/vector_imgs/mobile-App.svg";
+import featureimage7 from "../images/vector_imgs/local_processing.svg";
 
 const Hardware = () => {
   const { ref: HeaderVariableRef, inView: HeaderVariable } = useInView();
@@ -63,6 +65,11 @@ const Hardware = () => {
     AiVariable,
     MobileAppVariable,
     local_processing_Variable,
+    specialComponent: true,
+    // LiContent: [""],
+  };
+  const sstyle = {
+    backgroundImage: "url(`./images/trial_pics/background2.png`)",
   };
   return (
     <div className="App">
@@ -71,93 +78,67 @@ const Hardware = () => {
         //  props={props}
         props2={props2}
       />
-      {/* <Header
-        props2={props2}
-        ref={HeaderVariableRef}
-        //  props={props}
-      ></Header> */}
-      {/* <VideoPlayer
-        //  props={props}
-        // VideoVariable={VideoVariable}
-        props2={props2}
-        ref={VideoVariable1Ref}
-      />
-      <Feature
-        // props2={props2}
-        FeatureVariable={FeatureVariable}
-        ref={FeatureVariableRef}
-      /> */}
-
       <About
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        Hw={true}
+        new={true}
         ref={zWaveVariableRef}
-        image={aboutImage}
-        title="Comes With All You Need TO Secure Your House"
+        image={featureimage}
+        liImg={featureimage}
+        title="Z-wave"
         button="Get The App"
+        LiContent={[
+          "Doesnt interfere with Common Frequencies",
+          "High Data Transfer Rate",
+          "High range",
+          "Low Power Consumption",
+        ]}
       />
-      <About
+      <ReversedAbout
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={securityVariableRef}
-        image={aboutImage}
-        title="Comes With All You Need TO Secure Your House"
+        image={featureimage2}
+        liImg={featureimage2}
+        title="Security"
         button="Get The App"
+        new={true}
+        LiContent={[
+          "Fingerprint Lock",
+          "NfC Layer ",
+          "Tamper Proof Locking Mechanism",
+        ]}
       />
       <About
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
+        new={true}
         ref={surveillanceVariableRef}
-        image={aboutImage}
-        title="Comes With All You Need TO Secure Your House"
+        image={featureimage3}
+        liImg={featureimage3}
+        title="Surveillance"
         button="Get The App"
+        LiContent={["High Quality Video Feed", "PTZ Motion", "Night Vision"]}
       />
-      <About
+      <ReversedAbout
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={sensor_arrayVariableRef}
-        image={aboutImage}
-        title="Comes With All You Need TO Secure Your House"
+        image={featureimage4}
+        liImg={featureimage4}
+        title="Sensor Array"
         button="Get The App"
+        new={true}
+        LiContent={[
+          "Include Sensors for 180° Motion Detection",
+          "Can Include Different Sensor Arrays Which Come in Different Configurations",
+          "Highly Compatible With The System",
+        ]}
       />
-      {/* <Presentation
-        // props={props}
-        PresentationVariable={PresentationVariable}
-        ref={myPresentationVariableRef}
-      ></Presentation> */}
-      {/* <About
-        // props={props}
-        // AboutVariable={AboutVariable}
-        // setAboutVariable={setAboutVariable}
-        // PresentationVariable={PresentationVariable}
-        ref={AboutVariableRef}
-        image={aboutImage2}
-        title="Download And get the App Now"
-        button="Download"
-      /> */}
-      {/*  */}
-      {/* <VideoPlayer
-        //  props={props}
-        // VideoVariable={VideoVariable}
-        props2={props2}
-        ref={VideoVariable1Ref}
-      /> */}
-
-      {/* ai ,  */}
-
-      {/* <Founders /> */}
-      {/* <img_with_animations />
-      <Contact
-      // props={props}
-      // ref={ref}
-      // ContactVariable={ContactVariable}
-      // setContactVariable={setContactVariable}
-      ></Contact> */}
     </div>
   );
 };

@@ -19,12 +19,12 @@ import { useEffect, useState } from "react";
 import { useRef } from "react";
 // import Founders from "./Components/Founders";
 
-import featureimage2 from "../images/website_data/Security.png";
-import featureimage3 from "../images/website_data/Surveillance.png";
-import featureimage4 from "../images/website_data/Sensor_array.png";
-import featureimage5 from "../images/website_data/Ai.png";
-import featureimage6 from "../images/website_data/mobile App.png";
-import featureimage7 from "../images/website_data/local_processing.png";
+import featureimage2 from "../images/vector_imgs/Security.svg";
+import featureimage3 from "../images/vector_imgs/Surveillance.svg";
+import featureimage4 from "../images/vector_imgs/Sensor_array.svg";
+import featureimage5 from "../images/vector_imgs/Ai.svg";
+import featureimage6 from "../images/vector_imgs/mobile-App.svg";
+import featureimage7 from "../images/vector_imgs/local_processing.svg";
 
 const Software = () => {
   const { ref: HeaderVariableRef, inView: HeaderVariable } = useInView();
@@ -74,6 +74,7 @@ const Software = () => {
     AiVariable,
     MobileAppVariable,
     local_processing_Variable,
+    specialComponent: true,
   };
   return (
     <div className="App">
@@ -82,98 +83,54 @@ const Software = () => {
         //  props={props}
         props2={props2}
       />
-      {/* <Header
-        props2={props2}
-        ref={HeaderVariableRef}
-        //  props={props}
-      ></Header> */}
-      {/* <VideoPlayer
-        //  props={props}
-        // VideoVariable={VideoVariable}
-        props2={props2}
-        ref={VideoVariable1Ref}
-      />
-      <Feature
-        // props2={props2}
-        FeatureVariable={FeatureVariable}
-        ref={FeatureVariableRef}
-      /> */}
-
       <About
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
         new={true}
         ref={AiVariableRef}
-        image={aboutImage}
-        liImg={featureimage7}
-        title="Comes With All You Need TO Secure Your House"
+        image={featureimage5}
+        liImg={featureimage5}
+        title="Ai"
         button="Get The App"
+        LiContent={[
+          "High Speed ",
+          "High detection Accuracy",
+          "Better Generlization",
+          "Open Source",
+        ]}
       />
       <ReversedAbout
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={MobileAppVariableRef}
-        image={aboutImage}
+        image={featureimage6}
         liImg={featureimage6}
-        title="Comes With All You Need TO Secure Your House"
+        title="Mobile Application"
         button="Get The App"
+        new={true}
+        LiContent={[
+          "Cross Platform ",
+          "User Friendly",
+          "Control Smart Security System from anywhere",
+        ]}
       />
       <About
         // props={props}
         // AboutVariable={AboutVariable}
         props2={props2}
-        new={true}
         ref={local_processing_VariableRef}
-        image={aboutImage}
+        image={featureimage7}
         liImg={featureimage7}
-        title="Comes With All You Need TO Secure Your House"
+        title="Local Processing"
         button="Get The App"
+        new={true}
+        LiContent={[
+          "No Transfer of User Data all Over the internet ( Avoid Cloud Stigma) ",
+          "No Data Breach ",
+        ]}
       />
-      {/* <ReversedAbout
-        // props={props}
-        // AboutVariable={AboutVariable}
-        props2={props2}
-        ref={AboutVariableRef}
-        image={aboutImage}
-        liImg={featureimage6}
-        title="Comes With All You Need TO Secure Your House"
-        button="Get The App"
-      /> */}
-      {/* <Presentation
-        // props={props}
-        PresentationVariable={PresentationVariable}
-        ref={myPresentationVariableRef}
-      ></Presentation> */}
-      {/* <About
-        // props={props}
-        // AboutVariable={AboutVariable}
-        // setAboutVariable={setAboutVariable}
-        // PresentationVariable={PresentationVariable}
-        ref={AboutVariableRef}
-        image={aboutImage2}
-        title="Download And get the App Now"
-        button="Download"
-      /> */}
-      {/*  */}
-      {/* <VideoPlayer
-        //  props={props}
-        // VideoVariable={VideoVariable}
-        props2={props2}
-        ref={VideoVariable1Ref}
-      /> */}
-
-      {/* ai ,  */}
-
-      {/* <Founders /> */}
-      {/* <img_with_animations />
-      <Contact
-      // props={props}
-      // ref={ref}
-      // ContactVariable={ContactVariable}
-      // setContactVariable={setContactVariable}
-      ></Contact> */}
     </div>
   );
 };

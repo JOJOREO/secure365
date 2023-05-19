@@ -85,14 +85,17 @@ const Navbar = (props) => {
         </label>
         <ul className="menu">
           <li>
-            <a href="#" className={props.props2.zWaveVariable ? "active" : ""}>
+            <a
+              href="#Z-wave"
+              className={props.props2.zWaveVariable ? "active" : ""}
+            >
               Z-Wave
             </a>
           </li>
 
           <li>
             <a
-              href="#securityVariable"
+              href="#Security"
               className={props.props2.securityVariable ? "active" : ""}
             >
               Security
@@ -101,7 +104,7 @@ const Navbar = (props) => {
 
           <li>
             <a
-              href="#surveillanceVariable"
+              href="#Surveillance"
               className={props.props2.surveillanceVariable ? "active" : ""}
             >
               Surveillance
@@ -110,7 +113,7 @@ const Navbar = (props) => {
 
           <li>
             <a
-              href="#sensor_arrayVariable"
+              href="#Sensor_Array"
               className={props.props2.sensor_arrayVariable ? "active" : ""}
             >
               Sensor Array
@@ -125,9 +128,6 @@ const Navbar = (props) => {
             >
               Login/Signup
             </Link>
-          </li>
-          <li>
-            <a href="#">Download</a>
           </li>
         </ul>
       </nav>
@@ -149,23 +149,23 @@ const Navbar = (props) => {
         </label>
         <ul className="menu">
           <li>
-            <a href="#" className={props.props2.AiVariable ? "active" : ""}>
+            <a href="#Ai" className={props.props2.AiVariable ? "active" : ""}>
               AI
             </a>
           </li>
 
           <li>
             <a
-              href="#VideoPlayer"
+              href="#Mobile_Application"
               className={props.props2.MobileAppVariable ? "active" : ""}
             >
-              Mobile Appliaction
+              Mobile Application
             </a>
           </li>
 
           <li>
             <a
-              href="#features"
+              href="#Local_Processing"
               className={props.props2.local_processing_Variable ? "active" : ""}
             >
               Local Processing

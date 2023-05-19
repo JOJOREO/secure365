@@ -13,7 +13,10 @@ const myComponentStyle = {
 };
 const Header = forwardRef((props2, ref) => {
   return (
-    <div id="main" ref={ref}>
+    <div
+      id="main"
+      // ref={ref}
+    >
       <div className="name" id="name" style={myComponentStyle}>
         <h1>
           Leave The Security of your House with Us
@@ -24,6 +27,7 @@ const Header = forwardRef((props2, ref) => {
           Download
         </a>
       </div>
+      <div ref={ref}></div>
     </div>
   );
 });

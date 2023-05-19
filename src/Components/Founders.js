@@ -11,14 +11,18 @@ import founderimage4 from "../images/team_members/Komos.jpeg";
 import founderimage5 from "../images/team_members/Walid.jpeg";
 const myComponentStyle = {
   // margin: "100px",
-  marginBottom: 50,
-  marginTop: 50,
+  // marginBottom: 50,
+  // marginTop: 50,
+  marginBottom: 0,
+  marginTop: 0,
   // padding: "150px",
+  paddingBottom: "30px",
 };
 
 const Founders = forwardRef((FeatureVariable, ref) => {
   return (
     <div id="features" style={myComponentStyle}>
+      <h1 style={{ color: "#00b7ff" }}>Team Members</h1>
       <div className="a-container" ref={ref}>
         {/* <h1>Software </h1> */}
         <FeatureBox
