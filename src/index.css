@@ -99,6 +99,56 @@ nav ul li a {
   transition: 0.2s ease-in-out;
   text-decoration: none;
 }
+.signOutBtn {
+  font-family: calibri;
+  height: 40px;
+  line-height: 43px;
+  margin: 3px;
+  padding: 0px 22px;
+  display: flex;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: 0.2s ease-in-out;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.signOutBtn:hover {
+  background-color: #00b7ff;
+  color: #ffffff;
+  box-shadow: 5px 10px 30px rgba(2, 238, 255, 0.336);
+  transition: all ease 0.2s;
+}
+
+
+.signedIn{
+  font-family: calibri;
+    height: 40px;
+    line-height: 43px;
+    margin: 3px;
+    padding: 0px 22px;
+    display: flex;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    transition: 0.2s ease-in-out;
+    text-decoration: none;
+    color: #ff4800;
+    /* cursor: pointer; */
+}
+.signedIn:hover{
+  background:none ;
+  box-shadow:none;
+  transition: none;
+  color: #ff4800;
+}
 
 nav ul li a:hover {
   background-color: #00b7ff;

@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 // import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import Founders from "./Components/Founders";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   // const passer = useEffect(() => {}, []);

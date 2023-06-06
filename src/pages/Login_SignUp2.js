@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import background from "../images/trial_pics/background2.png";
 import showPwdImg from "./show-password.svg";
 import hidePwdImg from "./hide-password.svg";
+import Alert from "react-bootstrap/Alert";
+import { Link } from "react-router-dom";
 
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../firebase";
 const Login_SignUp2 = () => {
   let [authMode, setAuthMode] = useState("login");
   const changeAuthMode = () => {
     setAuthMode(authMode === "login" ? "signup" : "login");
   };
 
+  const SignUpEmailRef = useRef();
+  const SignUpUserRef = useRef();
+  const SignUpPWDRef = useRef();
+  const SignUpPWDRepeatRef = useRef();
+  const LoginEmailRef = useRef();
+  const LoginPWDRef = useRef();
+
+  // const { Signup, currentUser } = useAuth();
+  const [error, setError] = useState("");
+  const [success, setsuccess] = useState("");
+  // alert(` initialize ,\n ${error}`);
+  const [loading, setLoading] = useState(false);
   const [loginEmail, setLoginEmail] = useState("");
 
   const [signUpEmail, setSignUpEmail] = useState("");
@@ -29,6 +49,94 @@ const Login_SignUp2 = () => {
   const backgroundStyle = {
     backgroundImage: `url(${background})`,
   };
+  const [ctr, setCtr] = useState(5);
+  // useEffect(() => {
+  //   if (ctr === 0) return;
+  //   setInterval(() => {
+  //     setCtr(ctr - 1);
+  //   }, 1000);
+  // }, success);
+  // const auth = getAuth();
+  // createUserWithEmailAndPassword(auth, loginEmail, loginPwd)
+  //   .then((userCredential) => {
+  //     // Signed in
+  //     const user = userCredential.user;
+
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     // ..
+  //   });
+
+  const signIn = (e) => {
+    e.preventDefault();
+
+    // const ctrFnc = () => {
+    //   for (let index = 1; index <= 5; index++) {
+    //     setCtr(ctr--);
+    //     // return index;
+    //   }
+    // };
+
+    signInWithEmailAndPassword(auth, loginEmail, loginPwd)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(userCredential);
+        setError("");
+        // ctrFnc;
+        setsuccess(
+          `Logged in As ( ${loginEmail} ) succesfully!\n redirecting to homepage...`
+        );
+
+        setLoading(true);
+        setTimeout(moveToHome, 3000);
+        function moveToHome() {
+          document.location.href = "/";
+        }
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error + "\n");
+        console.log(error.message + "\n");
+        console.log(error);
+        setsuccess(null);
+        return setError(errorCode.substring(5, errorCode.length));
+        // ..
+      });
+    // console.log(`Signed in As ${loginEmail}`);
+  };
+  // const signUp = (e) => {
+  //   e.preventDefault();
+  //   if (SignUpPwd !== SignUpRepeatPwd) {
+  //     return setError("Passwords dont match");
+  //   }
+  //   // createUserWithEmailAndPassword(auth, loginEmail, loginPwd)
+  //   createUserWithEmailAndPassword(auth, signUpEmail, SignUpPwd)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       console.log(userCredential);
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // alert(`${signUpEmail},\n${SignUpPwd}`);
+  //       console.log(error.code + "\n");
+  //       console.log(error.message + "\n");
+  //       console.log(error);
+  //       console.log(errorCode.substring(5, errorCode.length));
+  //       setsuccess("");
+  //       setError(errorCode.substring(5, errorCode.length));
+  //       // ..
+  //     });
+  //   setsuccess(`SignUp succesful As ${signUpEmail}`);
+  // };
 
   if (authMode === "login") {
     return (
@@ -37,18 +145,37 @@ const Login_SignUp2 = () => {
         style={backgroundStyle}
         // style={{ backgroundImage: `url${background}` }}
       >
-        <form className="Auth-form">
+        <form className="Auth-form" onSubmit={signIn}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Login</h3>
+            {success && (
+              <Alert style={{ textAlign: "center" }} variant="success ">
+                {success}
+              </Alert>
+            )}
+            {error && (
+              <Alert style={{ textAlign: "center" }} variant="danger">
+                {error}
+              </Alert>
+            )}
             <div className="text-center">
               Not registered yet?{" "}
-              <span
+              <Link to={"/SignUp"}>
+                <span
+                  className="link-primary"
+                  // onClick={changeAuthMode}
+                  style={{ cursor: "pointer" }}
+                >
+                  Sign Up
+                </span>
+              </Link>
+              {/* <span
                 className="link-primary"
                 onClick={changeAuthMode}
                 style={{ cursor: "pointer" }}
               >
                 Sign Up
-              </span>
+              </span> */}
             </div>
             <div className="form-group mt-3">
               <label>Email address</label>
@@ -59,6 +186,7 @@ const Login_SignUp2 = () => {
                 placeholder="Enter email"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
+                ref={LoginEmailRef}
                 // value={loginEmailInput}
               />
             </div>
@@ -71,6 +199,7 @@ const Login_SignUp2 = () => {
                 className="form-control mt-1"
                 value={loginPwd}
                 onChange={(e) => setLoginPwd(e.target.value)}
+                ref={LoginPWDRef}
               />
               <img
                 title={loginIsRevealPwd ? "Hide password" : "Show password"}
@@ -79,7 +208,11 @@ const Login_SignUp2 = () => {
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn btn-primary">
+              <button
+                disabled={loading}
+                type="submit"
+                className="btn btn-primary"
+              >
                 Login
               </button>
             </div>
@@ -91,132 +224,148 @@ const Login_SignUp2 = () => {
       </div>
     );
   }
+  // alert(` try 0,\n ${error}`);
+  // return (
+  //   <div className="Auth-form-container" style={backgroundStyle}>
+  //     {/* <form className="Auth-form" onSubmit={handleSubmit}> */}
+  //     <form className="Auth-form" onSubmit={signUp}>
+  //       <div className="Auth-form-content">
+  //         <h3 className="Auth-form-title">Sign Up</h3>
+  //         {/* {currentUser && currentUser.email} */}
+  //         {/* {JSON.stringify(currentUser)} */}
+  //         {error && (
+  //           <Alert style={{ textAlign: "center" }} variant="danger">
+  //             {error}
+  //           </Alert>
+  //         )}
+  //         <div className="text-center">
+  //           Already registered?{" "}
+  //           <span
+  //             className="link-primary"
+  //             onClick={changeAuthMode}
+  //             style={{ cursor: "pointer" }}
+  //           >
+  //             Login
+  //           </span>
+  //         </div>
+  //         <div className="form-group mt-3">
+  //           <label>Username</label>
+  //           <input
+  //             required
+  //             type="text"
+  //             className="form-control mt-1"
+  //             placeholder="e.g Joe_seif2964"
+  //             value={signUpUsername}
+  //             onChange={(e) => setSignUpUsername(e.target.value)}
+  //             ref={SignUpUserRef}
+  //           />
+  //         </div>
+  //         <div className="form-group mt-3">
+  //           <label>Email address</label>
+  //           <input
+  //             required
+  //             type="email"
+  //             className="form-control mt-1"
+  //             placeholder="Email Address"
+  //             value={signUpEmail}
+  //             onChange={(e) => setSignUpEmail(e.target.value)}
+  //             ref={SignUpEmailRef}
+  //             //   onChange={setsignUpEmailInput(signUpEmailInput)}
+  //             //   value={signUpEmailInput}
+  //           />
+  //         </div>
+  //         <div className="form-group mt-3 pwd-container">
+  //           <label>Password</label>
+  //           <input
+  //             // type={passwordType}
+  //             // onChange={handlePasswordChange}
+  //             // value={passwordInput}
 
-  return (
-    <div className="Auth-form-container" style={backgroundStyle}>
-      <form className="Auth-form">
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign Up</h3>
-          <div className="text-center">
-            Already registered?{" "}
-            <span
-              className="link-primary"
-              onClick={changeAuthMode}
-              style={{ cursor: "pointer" }}
-            >
-              Login
-            </span>
-          </div>
-          <div className="form-group mt-3">
-            <label>Username</label>
-            <input
-              required
-              type="text"
-              className="form-control mt-1"
-              placeholder="e.g Joe_seif2964"
-              value={signUpUsername}
-              onChange={(e) => setSignUpUsername(e.target.value)}
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Email address</label>
-            <input
-              required
-              type="email"
-              className="form-control mt-1"
-              placeholder="Email Address"
-              value={signUpEmail}
-              onChange={(e) => setSignUpEmail(e.target.value)}
-              //   onChange={setsignUpEmailInput(signUpEmailInput)}
-              //   value={signUpEmailInput}
-            />
-          </div>
-          <div className="form-group mt-3 pwd-container">
-            <label>Password</label>
-            <input
-              // type={passwordType}
-              // onChange={handlePasswordChange}
-              // value={passwordInput}
+  //             // type="password"
 
-              // type="password"
+  //             // type={password}
+  //             // onChange={onPasswordChange}
+  //             // value={passwordInput}
+  //             // placeholder="Enter password"
+  //             // name="password"
+  //             // className="form-control"
+  //             name="SignUpPwd"
+  //             placeholder="Enter Password"
+  //             type={signUpisRevealPwd ? "text" : "password"}
+  //             className="form-control mt-1"
+  //             value={SignUpPwd}
+  //             onChange={(e) => setSignUpPwd(e.target.value)}
+  //             ref={SignUpPWDRef}
+  //           />
 
-              // type={password}
-              // onChange={onPasswordChange}
-              // value={passwordInput}
-              // placeholder="Enter password"
-              // name="password"
-              // className="form-control"
-              name="SignUpPwd"
-              placeholder="Enter Password"
-              type={signUpisRevealPwd ? "text" : "password"}
-              className="form-control mt-1"
-              value={SignUpPwd}
-              onChange={(e) => setSignUpPwd(e.target.value)}
-            />
+  //           {/*
+  //           const [SignUpPwd, setSignUpPwd] = useState("");
+  //           const [signUpisRevealPwd, setSignUpIsRevealPwd] = useState(false); */}
+  //           <img
+  //             title={signUpisRevealPwd ? "Hide password" : "Show password"}
+  //             src={!signUpisRevealPwd ? hidePwdImg : showPwdImg}
+  //             onClick={() => setSignUpIsRevealPwd((prevState) => !prevState)}
+  //           />
+  //         </div>
+  //         <div className="form-group mt-3 pwd-container">
+  //           <label>Repeat Password</label>
+  //           <input
+  //             // type={passwordType}
+  //             // onChange={handlePasswordChange}
+  //             // value={passwordInput}
 
-            {/*   
-            const [SignUpPwd, setSignUpPwd] = useState("");
-            const [signUpisRevealPwd, setSignUpIsRevealPwd] = useState(false); */}
-            <img
-              title={signUpisRevealPwd ? "Hide password" : "Show password"}
-              src={!signUpisRevealPwd ? hidePwdImg : showPwdImg}
-              onClick={() => setSignUpIsRevealPwd((prevState) => !prevState)}
-            />
-          </div>
-          <div className="form-group mt-3 pwd-container">
-            <label>Repeat Password</label>
-            <input
-              // type={passwordType}
-              // onChange={handlePasswordChange}
-              // value={passwordInput}
+  //             // type="password"
 
-              // type="password"
+  //             // type={password}
+  //             // onChange={onPasswordChange}
+  //             // value={passwordInput}
+  //             // placeholder="Enter password"
+  //             // name="password"
+  //             // className="form-control"
+  //             name="SignUpRepeatPwd"
+  //             placeholder="Repeat Password"
+  //             type={signUpRepeatisRevealPwd ? "text" : "password"}
+  //             className="form-control mt-1"
+  //             value={SignUpRepeatPwd}
+  //             onChange={(e) => setSignUpRepeatPwd(e.target.value)}
+  //             ref={SignUpPWDRepeatRef}
 
-              // type={password}
-              // onChange={onPasswordChange}
-              // value={passwordInput}
-              // placeholder="Enter password"
-              // name="password"
-              // className="form-control"
-              name="SignUpRepeatPwd"
-              placeholder="Repeat Password"
-              type={signUpRepeatisRevealPwd ? "text" : "password"}
-              className="form-control mt-1"
-              value={SignUpRepeatPwd}
-              onChange={(e) => setSignUpRepeatPwd(e.target.value)}
+  //             // className="form-control mt-1"
 
-              // className="form-control mt-1"
+  //             // placeholder="Enter password"
+  //           />
+  //           {/*
 
-              // placeholder="Enter password"
-            />
-            {/* 
-            
-            //   const [SignUpRepeatPwd, setSignUpRepeatPwd] = useState("");
-            // const [signUpRepeatisRevealPwd, setsignUpRepeatIsRevealPwd] = useState(false);
+  //           //   const [SignUpRepeatPwd, setSignUpRepeatPwd] = useState("");
+  //           // const [signUpRepeatisRevealPwd, setsignUpRepeatIsRevealPwd] = useState(false);
 
-            */}
-            <img
-              title={
-                signUpRepeatisRevealPwd ? "Hide password" : "Show password"
-              }
-              src={!signUpRepeatisRevealPwd ? hidePwdImg : showPwdImg}
-              onClick={() =>
-                setsignUpRepeatIsRevealPwd((prevState) => !prevState)
-              }
-            />
-          </div>
-          <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
-          </div>
-          <p className="text-center mt-2">
-            Forgot <a href="#">password?</a>
-          </p>
-        </div>
-      </form>
-    </div>
-  );
+  //           */}
+  //           <img
+  //             title={
+  //               signUpRepeatisRevealPwd ? "Hide password" : "Show password"
+  //             }
+  //             src={!signUpRepeatisRevealPwd ? hidePwdImg : showPwdImg}
+  //             onClick={() =>
+  //               setsignUpRepeatIsRevealPwd((prevState) => !prevState)
+  //             }
+  //           />
+  //         </div>
+  //         <div className="d-grid gap-2 mt-3">
+  //           <button
+  //             disabled={loading}
+  //             type="submit"
+  //             className="btn btn-primary"
+  //           >
+  //             Submit
+  //           </button>
+  //         </div>
+  //         <p className="text-center mt-2">
+  //           Forgot <a href="#">password?</a>
+  //         </p>
+  //       </div>
+  //     </form>
+  //   </div>
+  // );
 };
 
 //   const [SignUpRepeatPwd, setSignUpRepeatPwd] = useState("");

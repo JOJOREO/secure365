@@ -1,11 +1,38 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import AuthDetails from "../Components/AuthDetails";
 import logo from "../images/website_data/logo.png";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+
+import { auth } from "../firebase";
 // import { NavLink } from "react-router-dom";
 // const Navbar = ({ props }) => {
 const Navbar = (props) => {
+  const [authUser, setAuthUser] = useState(null);
+
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+
+    return () => {
+      listen();
+    };
+  }, []);
+
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("sign out successful");
+      })
+      .catch((error) => console.log(error));
+  };
+
   // let [navbarMode, setNavbarMode] = useState("home");
 
   // setNavbarMode(props2.navbarMode);
@@ -119,16 +146,21 @@ const Navbar = (props) => {
               Sensor Array
             </a>
           </li>
-          <li>
-            <Link
-              to={"/Login"}
-              // href="#login/SignUp"
-              // className={props.PresentationVariable ? "active" : ""}
-              // className={props2.PresentationVariable ? "active" : ""}
-            >
-              Login/Signup
-            </Link>
-          </li>
+          {!authUser && (
+            <li>
+              <Link
+                to={"/Login"}
+                // href="#login/SignUp"
+                // className={props.PresentationVariable ? "active" : ""}
+                // className={props2.PresentationVariable ? "active" : ""}
+              >
+                Login/Signup
+              </Link>
+            </li>
+          )}
+          <>
+            <AuthDetails></AuthDetails>
+          </>
         </ul>
       </nav>
     );
@@ -171,19 +203,25 @@ const Navbar = (props) => {
               Local Processing
             </a>
           </li>
-          <li>
-            <Link
-              to={"/Login"}
-              // href="#login/SignUp"
-              // className={props.PresentationVariable ? "active" : ""}
-              // className={props2.PresentationVariable ? "active" : ""}
-            >
-              Login/Signup
-            </Link>
-          </li>
+          {!authUser && (
+            <li>
+              <Link
+                to={"/Login"}
+                // href="#login/SignUp"
+                // className={props.PresentationVariable ? "active" : ""}
+                // className={props2.PresentationVariable ? "active" : ""}
+              >
+                Login/Signup
+              </Link>
+            </li>
+          )}
+
           <li>
             <a href="#">Download</a>
           </li>
+          <>
+            <AuthDetails></AuthDetails>
+          </>
         </ul>
       </nav>
     );
@@ -243,19 +281,24 @@ const Navbar = (props) => {
             UI{" "}
           </a>
         </li>
-        <li>
-          <Link
-            to={"/Login"}
-            // href="#login/SignUp"
-            // className={props.PresentationVariable ? "active" : ""}
-            // className={props2.PresentationVariable ? "active" : ""}
-          >
-            Login/Signup
-          </Link>
-        </li>
+        {!authUser && (
+          <li>
+            <Link
+              to={"/Login"}
+              // href="#login/SignUp"
+              // className={props.PresentationVariable ? "active" : ""}
+              // className={props2.PresentationVariable ? "active" : ""}
+            >
+              Login/Signup
+            </Link>
+          </li>
+        )}
         <li>
           <a href="#">Download</a>
         </li>
+        <>
+          <AuthDetails></AuthDetails>
+        </>
       </ul>
     </nav>
   );
