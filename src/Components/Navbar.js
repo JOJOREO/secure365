@@ -245,7 +245,14 @@ const Navbar = (props) => {
             Home
           </a>
         </li>
-
+        <li>
+          <a
+            href="#about"
+            className={props.props2.AboutVariable ? "active" : ""}
+          >
+            About
+          </a>
+        </li>
         <li>
           <a
             href="#VideoPlayer"
@@ -264,14 +271,6 @@ const Navbar = (props) => {
           </a>
         </li>
 
-        <li>
-          <a
-            href="#about"
-            className={props.props2.AboutVariable ? "active" : ""}
-          >
-            About
-          </a>
-        </li>
         <li>
           <a
             href="#presentation"

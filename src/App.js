@@ -105,6 +105,15 @@ function App() {
         ref={HeaderVariableRef}
         //  props={props}
       ></Header>
+      <About
+        // props={props}
+        // AboutVariable={AboutVariable}
+        props2={props2}
+        ref={AboutVariableRef}
+        image={aboutImage}
+        title="Comes With All You Need TO Secure Your House"
+        button="Get The App"
+      />
       <VideoPlayer
         //  props={props}
         // VideoVariable={VideoVariable}
@@ -117,15 +126,6 @@ function App() {
         ref={FeatureVariableRef}
       />
 
-      <About
-        // props={props}
-        // AboutVariable={AboutVariable}
-        props2={props2}
-        ref={AboutVariableRef}
-        image={aboutImage}
-        title="Comes With All You Need TO Secure Your House"
-        button="Get The App"
-      />
       <Presentation
         // props={props}
         PresentationVariable={PresentationVariable}
