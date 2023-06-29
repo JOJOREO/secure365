@@ -2,15 +2,32 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 
-const AuthDetails = () => {
+const AuthDetails = ({ extract }) => {
   const [authUser, setAuthUser] = useState(null);
   const [nickName, setNickname] = useState(null);
+
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user.displayName);
+        console.log(user);
         setAuthUser(user);
         setNickname(user.displayName);
+        // extract(user.displayName);
+        // extract([user.displayName, user.email, user.photoURL]);
+        // userData = {
+        //   displayName: user.displayName,
+        //   email: user.email,
+        //   photoURL: user.photoURL,
+        // };
+        // {
+        //   console.log(userData);
+        // }
+        extract({
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        });
       } else {
         setAuthUser(null);
         setNickname(null);

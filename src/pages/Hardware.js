@@ -18,6 +18,10 @@ import featureimage5 from "../images/vector_imgs/Ai.svg";
 import featureimage6 from "../images/vector_imgs/mobile-App.svg";
 import featureimage7 from "../images/vector_imgs/local_processing.svg";
 
+import Real_image_Sensor_array from "../images/photos_from_7oda/Sensor Array.jpg";
+import Real_image_Camera from "../images/photos_from_7oda/Camera.jpg";
+import Real_image_Lock from "../images/photos_from_7oda/Lock.jpg";
+
 const Hardware = () => {
   const { ref: HeaderVariableRef, inView: HeaderVariable } = useInView();
 
@@ -100,7 +104,7 @@ const Hardware = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={securityVariableRef}
-        image={featureimage2}
+        image={Real_image_Lock}
         liImg={featureimage2}
         title="Security"
         button="Get The App"
@@ -117,7 +121,7 @@ const Hardware = () => {
         props2={props2}
         new={true}
         ref={surveillanceVariableRef}
-        image={featureimage3}
+        image={Real_image_Camera}
         liImg={featureimage3}
         title="Surveillance"
         button="Get The App"
@@ -128,7 +132,7 @@ const Hardware = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={sensor_arrayVariableRef}
-        image={featureimage4}
+        image={Real_image_Sensor_array}
         liImg={featureimage4}
         title="Sensor Array"
         button="Get The App"

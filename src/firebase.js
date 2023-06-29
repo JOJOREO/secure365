@@ -23,6 +23,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -37,6 +38,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// const storage = getStorage(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+export const storage = getStorage(app);

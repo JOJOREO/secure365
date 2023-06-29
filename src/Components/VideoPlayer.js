@@ -3,8 +3,9 @@ import React, { forwardRef, useState } from "react";
 
 import { useRef } from "react";
 import ReactPlayer from "react-player";
-import Localvidsrc from "../images/WhatsApp Video 2023-04-22 at 7.10.07 AM.mp4";
-import Localvidsrc2 from "../images/SampleVideo_1280x720_5mb.mp4";
+// import Localvidsrc from "../images/WhatsApp Video 2023-04-22 at 7.10.07 AM.mp4";
+// import Localvidsrc2 from "../images/SampleVideo_1280x720_5mb.mp4";
+import Localvidsrc from "../images/photos_from_7oda/Project_demo_sad.mp4";
 const VIDEO_PATH = "https://youtu.be/0BIaDVnYp2A";
 
 const VideoPlayer = forwardRef((props, ref) => {
@@ -55,7 +56,7 @@ const VideoPlayer = forwardRef((props, ref) => {
 
       <ReactPlayer
         ref={playerRef}
-        url={Localvidsrc2}
+        url={Localvidsrc}
         controls={true}
         width="100%"
         height="100%"

@@ -26,6 +26,8 @@ import featureimage5 from "../images/vector_imgs/Ai.svg";
 import featureimage6 from "../images/vector_imgs/mobile-App.svg";
 import featureimage7 from "../images/vector_imgs/local_processing.svg";
 
+import Real_image_Hub from "../images/photos_from_7oda/Hub.jpg";
+
 const Software = () => {
   const { ref: HeaderVariableRef, inView: HeaderVariable } = useInView();
 
@@ -121,7 +123,7 @@ const Software = () => {
         // AboutVariable={AboutVariable}
         props2={props2}
         ref={local_processing_VariableRef}
-        image={featureimage7}
+        image={Real_image_Hub}
         liImg={featureimage7}
         title="Local Processing"
         button="Get The App"

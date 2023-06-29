@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import Login_SignUp2 from "./pages/Login_SignUp2";
 import { AuthProvider } from "./contexts/AuthContext";
 import SignUp2_only from "./pages/SignUp2_only";
+import Profile from "./pages/profile";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
@@ -26,6 +27,7 @@ root.render(
       <Route path="/Software" element={<Software></Software>}></Route>
       <Route path="/Login" element={<Login_SignUp2></Login_SignUp2>}></Route>
       <Route path="/SignUp" element={<SignUp2_only></SignUp2_only>}></Route>
+      <Route path="/Profile" element={<Profile></Profile>}></Route>
     </Routes>
   </Router>
 );

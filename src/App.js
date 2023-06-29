@@ -3,7 +3,8 @@ import Feature from "./Components/Feature";
 import About from "./Components/about";
 import Contact from "./Components/Contact";
 import Presentation from "./Components/presentation";
-import aboutImage from "./images/trial_pics/Frame 19.png";
+// import aboutImage from "./images/trial_pics/Frame 19.png";
+import aboutImage from "./images/trial_pics/new/fotor_2023-6-29_23_42_52-fotor-20230629234348.png";
 import aboutImage2 from "./images/trial_pics/download.png";
 import VideoPlayer from "./Components/VideoPlayer";
 import Navbar from "./Components/Navbar";
@@ -11,12 +12,19 @@ import Navbar from "./Components/Navbar";
 
 import { useInView } from "react-intersection-observer";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 
 // import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import Founders from "./Components/Founders";
 import { AuthProvider } from "./contexts/AuthContext";
+import Profile from "./pages/profile";
+import React from "react";
+// import { MyNewContext } from "./AuthContext";
+// const nav = [];
+// const MyContext = createContext({});
+
+import { userContext } from "./AuthContext";
 
 function App() {
   // const passer = useEffect(() => {}, []);
@@ -79,6 +87,27 @@ function App() {
   const { ref: VideoVariable2Ref, inView: VideoVariable2 } = useInView(); //not necessary optional + no navabr li
   const { ref: FoundersVariableRef, inView: FoundersVariable } = useInView(); //not necessary optional + no navabr li
 
+  //callback fnc
+
+  const [tempZ, setTempZ] = useState({});
+  // const [tempZ2, setTempZ2] = useRef({});
+  // const stateRef = useRef();
+  // stateRef.current = tempZ;
+  const getUser = (userValue) => {
+    console.log("user passed succesfully " + userValue.displayName);
+    console.log("user passed succesfully " + userValue.email);
+    console.log("user passed succesfully " + userValue.photoURL);
+    // z = userValue;
+    setTempZ(userValue);
+
+    // setTempZ2(userValue);
+    // alert("user passed succesfully " + userValue);
+    // return userValue;
+  };
+  console.log(tempZ);
+
+  // console.log(tempZ2);
+  let f = "trash";
   const props2 = {
     HeaderVariable,
     FeatureVariable,
@@ -89,6 +118,7 @@ function App() {
     FoundersVariable,
     specialComponent: false,
   };
+
   return (
     <div
       className="App"
@@ -99,12 +129,28 @@ function App() {
       <Navbar
         //  props={props}
         props2={props2}
+        extract={getUser}
       />
       <Header
         props2={props2}
         ref={HeaderVariableRef}
+        extract={getUser}
+        tempZ={tempZ}
         //  props={props}
-      ></Header>
+      >
+        {/* <userContext.Provider value={f}>
+          <Profile props={props2}></Profile>
+        </userContext.Provider> */}
+        {/* {console.log(tempZ)} */}
+        {/* <MyContext.Provider value={tempZ}> */}
+        {/* {console.log(tempZ)} */}
+        {/* <Profile props={tempZ}></Profile> */}
+        {/* {console.log(tempZ)} */}
+        {}
+        {/* {console.log(tempZ)} */}
+        {/* </MyContext.Provider> */}
+      </Header>
+      {/* <Profile tempZ={{ tempZ }} extract={getUser}></Profile> */}
       <About
         // props={props}
         // AboutVariable={AboutVariable}

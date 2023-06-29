@@ -2,14 +2,22 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import AuthDetails from "../Components/AuthDetails";
-import logo from "../images/website_data/logo.png";
+// import logo from "../images/website_data/logo.png";
+import logo from "../images/photos_from_7oda/okokok.png";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import { auth } from "../firebase";
 // import { NavLink } from "react-router-dom";
 // const Navbar = ({ props }) => {
 const Navbar = (props) => {
+  console.log("props", { ...props });
   const [authUser, setAuthUser] = useState(null);
+  // props.extract("ahmed");
+
+  // //callback fnc
+  // const getUser = (userValue) => {
+  //   return userValue;
+  // };
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -19,6 +27,8 @@ const Navbar = (props) => {
         setAuthUser(null);
       }
     });
+
+    // console.log("authuser", authUser.email);
 
     return () => {
       listen();
@@ -103,9 +113,14 @@ const Navbar = (props) => {
         className={nav ? "active" : "nav"}
         // style={{ background: "white" }}
       >
-        <a href="#" className="logo">
+        <Link to={"/"}>
+          <a href="#" className="logo">
+            <img src={logo}></img>
+          </a>
+        </Link>
+        {/* <a href="#" className="logo">
           <img src={logo}></img>
-        </a>
+        </a> */}
         <input type="checkbox" className="menu-btn" id="menu-btn"></input>
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="nav-icon"></span>
@@ -159,7 +174,8 @@ const Navbar = (props) => {
             </li>
           )}
           <>
-            <AuthDetails></AuthDetails>
+            {/* {props.extract("alex")} */}
+            <AuthDetails extract={props.extract}></AuthDetails>
           </>
         </ul>
       </nav>
@@ -172,9 +188,14 @@ const Navbar = (props) => {
         className={nav ? "active" : "nav"}
         // style={{ background: "white" }}
       >
-        <a href="#" className="logo">
+        <Link to={"/"}>
+          <a href="#" className="logo">
+            <img src={logo}></img>
+          </a>
+        </Link>
+        {/* <a href="#" className="logo">
           <img src={logo}></img>
-        </a>
+        </a> */}
         <input type="checkbox" className="menu-btn" id="menu-btn"></input>
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="nav-icon"></span>
@@ -220,7 +241,7 @@ const Navbar = (props) => {
             <a href="#">Download</a>
           </li>
           <>
-            <AuthDetails></AuthDetails>
+            <AuthDetails extract={props.extract}></AuthDetails>
           </>
         </ul>
       </nav>
@@ -232,9 +253,15 @@ const Navbar = (props) => {
       className={nav ? "active" : "nav"}
       // style={{ background: "white" }}
     >
-      <a href="#" className="logo">
+      <Link to={"/"}>
+        <a href="#" className="logo">
+          <img src={logo}></img>
+        </a>
+      </Link>
+
+      {/* <a href="#" className="logo">
         <img src={logo}></img>
-      </a>
+      </a> */}
       <input type="checkbox" className="menu-btn" id="menu-btn"></input>
       <label className="menu-icon" htmlFor="menu-btn">
         <span className="nav-icon"></span>
@@ -296,7 +323,7 @@ const Navbar = (props) => {
           <a href="#">Download</a>
         </li>
         <>
-          <AuthDetails></AuthDetails>
+          <AuthDetails extract={props.extract}></AuthDetails>
         </>
       </ul>
     </nav>
